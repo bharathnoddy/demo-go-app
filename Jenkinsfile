@@ -3,7 +3,7 @@ node
 withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'docker-hub-creds',
 usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']])
   {
-
+    def BRANCH_NAME = "dev"
     def appName = "demo-go-app"
     def imageTag = "${USERNAME}/${appName}:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
     checkout scm 
