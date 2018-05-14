@@ -14,7 +14,7 @@ usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']])
       sh("docker login -u ${USERNAME} -p ${PASSWORD} ")
       sh("docker push ${imageTag}")
     stage 'Deploy Application'
-      sh("kubectl set image deployment/demo-app-${env.BRANCH_NAME} -n prod frontend=${imageTag} ")
+      sh("kubectl set image deployment/demo-go-app-${env.BRANCH_NAME} -n prod ${appName}-${env.BRANCH_NAME}=${imageTag} ")
   }
 
 }
